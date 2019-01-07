@@ -1,9 +1,11 @@
+from django.conf import settings
 from django.db import models
 from datetime import datetime
 
 # Create your models here.
 
 class Posts(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     body = models.TextField()
     created_at = models.DateTimeField(default=datetime.now, blank=True)
